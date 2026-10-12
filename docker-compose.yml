@@ -1,0 +1,20 @@
+services:
+  app:
+    image: flash-mart:v1
+    container_name: flash-mart-api
+    ports:
+      - "8080:8080"
+    build: .
+  postgres:
+    image: postgres:17
+    container_name: flash-mart-db
+    environment:
+      POSTGRES_DB: flash-mart
+      POSTGRES_USER: shop
+      POSTGRES_PASSWORD: shop
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
