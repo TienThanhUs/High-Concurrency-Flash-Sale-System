@@ -1,6 +1,7 @@
 package com.hcmus.FlashMart_API.infrastructure.security;
 
 import com.hcmus.FlashMart_API.domain.entity.Role;
+import com.hcmus.FlashMart_API.domain.security.TokenGenerator;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -15,7 +16,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
-public class JwtUtil {
+public class JwtUtil implements TokenGenerator {
 
     @Value("${jwt.secret}")
     private String secret;
