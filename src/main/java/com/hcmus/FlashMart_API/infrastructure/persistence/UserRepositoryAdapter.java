@@ -34,6 +34,11 @@ public class UserRepositoryAdapter implements UserRepository {
         return repository.existsByEmail(email);
     }
 
+    @Override
+    public boolean existsByUsername(String username) {
+        return repository.existsByUsername(username);
+    }
+
     public User toDomain(UserJpaEntity entity) {
         if (entity == null) {
             return null;
