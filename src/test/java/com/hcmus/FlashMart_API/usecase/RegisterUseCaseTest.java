@@ -4,7 +4,6 @@ import com.hcmus.FlashMart_API.domain.entity.Role;
 import com.hcmus.FlashMart_API.domain.entity.User;
 import com.hcmus.FlashMart_API.domain.repository.UserRepository;
 import com.hcmus.FlashMart_API.infrastructure.security.JwtUtil;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
