@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Minecraft Monocraft Font Declarations ---------- */
+@font-face {
+  font-family: 'Monocraft';
+  src: url('/fonts/Monocraft.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- Màu nền ---------- */
+  --bg-page: #1b1b2f; /* nền trang (xanh đêm đậm) */
+  --bg-panel: #2a2a45; /* nền khung/panel */
+  --bg-panel-light: #3a3a5c; /* nền khung sáng hơn / hover */
+  --bg-inset: #121222; /* ô trũng: input, thanh tiến độ */
+
+  /* ---------- Chữ & Bóng chữ chuẩn Minecraft ---------- */
+  --text: #e0e0e0;
+  --text-muted: #a9a9c8;
+  --text-on-accent: #0b1a09; /* chữ tối đặt trên nền sáng */
+  --text-shadow-dark: 2px 2px 0 #3f3f3f;
+  --text-shadow-light: 1px 1px 0 rgba(255, 255, 255, 0.4);
+
+  /* ---------- Màu nhấn (giảm độ rực theo style Minecraft) ---------- */
+  /* Xanh lá Minecraft desaturated */
+  --green-light: #77cb69;
+  --green: #4ea344;
+  --green-dark: #276120;
+
+  /* Vàng điểm / XP */
+  --yellow-light: #f2da6d;
+  --yellow: #d4a529;
+  --yellow-dark: #825f0e;
+
+  /* Xanh dương thông tin */
+  --blue-light: #6ca7e0;
+  --blue: #3c7bbd;
+  --blue-dark: #1e4a77;
+
+  /* Đỏ nguy hiểm */
+  --red-light: #e56b6b;
+  --red: #b83d3d;
+  --red-dark: #6e1d1d;
+
+  /* Xám Minecraft nút bấm & khung */
+  --gray-light: #8e8e8e;
+  --gray: #737373;
+  --gray-dark: #3c3c3c;
+
+  /* ---------- Viền & bóng ---------- */
+  --outline: #0b0b14; /* viền ngoài của mọi thứ (gần đen) */
+  --border-w: 4px; /* viền chuẩn */
+  --border-w-sm: 3px; /* viền cho thành phần nhỏ */
+  --shadow-offset: 4px; /* độ lệch bóng chuẩn */
+
+  /* ---------- Cỡ & khoảng cách (bội số của 4) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* ---------- Font: Toàn bộ giao diện dùng Monocraft fallback sang Pixelify Sans ---------- */
+  --font-logo: 'Press Start 2P', monospace; /* Logo FLASHMART và số đồng hồ */
+  --font-pixel: 'Monocraft', 'Pixelify Sans', monospace; /* Tiêu đề, nút, nhãn */
+  --font-body: 'Monocraft', 'Pixelify Sans', monospace; /* Thân bài */
+}
+
+/* Render pixel sắc nét */
+img,
+canvas,
+.sprite,
+svg {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+body {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+  background-color: var(--bg-page);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  text-shadow: 2px 2px 0 #3f3f3f;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tiêu đề dùng bội số 8px (16, 24, 32) */
+h1 {
+  font-size: 32px;
+  line-height: 1.25;
+  text-shadow: 2px 2px 0 #3f3f3f;
+}
+h2 {
+  font-size: 24px;
+  line-height: 1.3;
+  text-shadow: 2px 2px 0 #3f3f3f;
+}
+h3 {
+  font-size: 24px;
+  line-height: 1.3;
+  text-shadow: 2px 2px 0 #3f3f3f;
+}
+h4, h5, h6 {
+  font-size: 16px;
+  line-height: 1.4;
+  text-shadow: 2px 2px 0 #3f3f3f;
+}
+
+/* Ô nhập liệu */
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+  font-size: 16px;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+input::placeholder,
+textarea::placeholder {
+  text-shadow: none;
+}
+
+/* Triệt tiêu bo góc toàn cục theo luật vàng */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* Scrollbar chuẩn phong cách Pixel */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-inset);
+  border-left: 4px solid var(--outline);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border: 4px solid var(--outline);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-light);
+}
+
+/* Animation kiểu pixel (steps) */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.animate-pixel-blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Tiện ích pixel box */
+.pixel-box {
+  background: var(--bg-panel);
+  border: var(--border-w) solid var(--outline);
+  box-shadow:
+    inset calc(var(--border-w) * -1) calc(var(--border-w) * -1) 0 0 rgba(0, 0, 0, 0.35),
+    inset var(--border-w) var(--border-w) 0 0 rgba(255, 255, 255, 0.18),
+    var(--shadow-offset) var(--shadow-offset) 0 0 var(--outline);
+}
+
+/* Ô trũng */
+.pixel-inset {
+  background: var(--bg-inset);
+  border: var(--border-w) solid var(--outline);
+  box-shadow:
+    inset 4px 4px 0 0 rgba(0, 0, 0, 0.5),
+    inset -4px -4px 0 0 rgba(255, 255, 255, 0.08);
+}
