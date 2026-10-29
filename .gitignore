@@ -1,5 +1,8 @@
 HELP.md
 target/
+**/target/
+frontend-source/node_modules/
+frontend-source/dist/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

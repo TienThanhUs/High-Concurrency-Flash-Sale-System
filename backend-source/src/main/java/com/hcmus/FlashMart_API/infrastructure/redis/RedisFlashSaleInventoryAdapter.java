@@ -112,7 +112,6 @@ public class RedisFlashSaleInventoryAdapter implements FlashSaleInventoryPort {
                 String.valueOf(userId)
         );
     }
-
     @Override
     public Long getStock(UUID campaignItemId) {
         String val = redisTemplate.opsForValue().get(stockKey(campaignItemId));
