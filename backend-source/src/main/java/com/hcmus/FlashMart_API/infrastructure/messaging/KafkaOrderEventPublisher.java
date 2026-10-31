@@ -4,6 +4,7 @@ import com.hcmus.FlashMart_API.domain.event.OrderCreatedEvent;
 import com.hcmus.FlashMart_API.domain.event.OrderEventPublisher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.json.JsonMapper;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 @RequiredArgsConstructor
+@ConditionalOnProperty(name = "app.kafka.enabled", havingValue = "true", matchIfMissing = true)
 public class KafkaOrderEventPublisher implements OrderEventPublisher {
 
     private final KafkaTemplate<String, String> kafkaTemplate;

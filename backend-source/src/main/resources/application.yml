@@ -15,6 +15,9 @@ spring:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      ssl:
+        enabled: ${REDIS_SSL:false}
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
@@ -37,9 +40,13 @@ app:
     email: ${ADMIN_EMAIL:}
     password: ${ADMIN_PASSWORD:}
   kafka:
+    enabled: ${KAFKA_ENABLED:true}
     order-created-topic: ${KAFKA_ORDER_CREATED_TOPIC:flashmart.order-created}
 
 management:
+  health:
+    kafka:
+      enabled: ${KAFKA_ENABLED:true}
   endpoints:
     web:
       exposure:

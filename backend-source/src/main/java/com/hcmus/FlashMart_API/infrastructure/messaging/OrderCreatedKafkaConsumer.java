@@ -4,6 +4,7 @@ import com.hcmus.FlashMart_API.domain.event.OrderCreatedEvent;
 import com.hcmus.FlashMart_API.usecase.ProcessOrderCreatedEventUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.json.JsonMapper;
@@ -11,6 +12,7 @@ import tools.jackson.databind.json.JsonMapper;
 @Component
 @RequiredArgsConstructor
 @Slf4j
+@ConditionalOnProperty(name = "app.kafka.enabled", havingValue = "true", matchIfMissing = true)
 public class OrderCreatedKafkaConsumer {
 
     private final ProcessOrderCreatedEventUseCase processOrderCreatedEventUseCase;
