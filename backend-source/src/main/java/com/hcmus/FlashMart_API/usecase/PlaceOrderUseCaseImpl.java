@@ -54,12 +54,12 @@ public class PlaceOrderUseCaseImpl implements PlaceOrderUseCase {
         // xu ly voi truong hop nguoi dung da mua
         if(status == ALREADY_PURCHASED)
         {
-            throw new ConflictException("Đã mua sản phẩm");
+            throw new ConflictException("ORD-002", "Đã mua sản phẩm");
         }
         // xu ly voi truong hop da het hang
         if(status != OK)
         {
-            throw new ConflictException("Sản phẩm đã hết !!!");
+            throw new ConflictException("ORD-001", "Sản phẩm đã hết !!!");
         }
 
         OrderCreatedEvent event = new OrderCreatedEvent(UUID.randomUUID(),userId,campaignItemId,now);
