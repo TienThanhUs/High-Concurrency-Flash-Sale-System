@@ -1,0 +1,60 @@
+name: FlashMart CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  frontend-ci:
+    name: Frontend (Lint & Build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend-source
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22 with npm cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: ./frontend-source/package-lock.json
+
+      - name: Install dependencies (clean install)
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Type-check and build Vite bundle
+        run: npm run build
+
+  backend-ci:
+    name: Backend (Java 21 & Testcontainers)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend-source
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21 (Eclipse Temurin) with Maven cache
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
+          cache-dependency-path: ./backend-source/pom.xml
+
+      - name: Ensure mvnw is executable
+        run: chmod +x mvnw
+
+      - name: Run Unit & Integration Tests
+        run: ./mvnw test -B
