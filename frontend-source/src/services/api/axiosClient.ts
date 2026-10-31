@@ -2,8 +2,17 @@ import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 const TOKEN_KEY = 'flashmart_jwt';
 
+function resolveBaseUrl(): string {
+  const envUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+  if (envUrl) {
+    const clean = envUrl.replace(/\/+$/, '');
+    return clean.endsWith('/api/v1') ? clean : `${clean}/api/v1`;
+  }
+  return import.meta.env.PROD ? 'https://flashmart-api.onrender.com/api/v1' : '/api/v1';
+}
+
 export const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || '/api/v1',
+  baseURL: resolveBaseUrl(),
   headers: {
     'Content-Type': 'application/json',
   },
