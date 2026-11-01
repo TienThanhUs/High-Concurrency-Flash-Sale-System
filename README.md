@@ -1,4 +1,4 @@
-# ⚡ FlashMart — High-Concurrency Flash Sale System
+# FlashMart — High-Concurrency Flash Sale System
 
 [![FlashMart CI Pipeline](https://github.com/TienThanhUs/High-Concurrency-Flash-Sale-System/actions/workflows/ci.yml/badge.svg)](https://github.com/TienThanhUs/High-Concurrency-Flash-Sale-System/actions/workflows/ci.yml)
 ![Java 21](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
@@ -44,7 +44,7 @@ sequenceDiagram
 
 ---
 
-## ✨ Tính Năng Chính (Features)
+##  Tính Năng Chính (Features)
 
 - **Chống Oversell & Mua Trùng tuyệt đối:** Thực thi kiểm tra tồn kho, kiểm tra lịch sử mua của từng user và trừ kho trong **1 Redis Lua Script nguyên tử (Atomic)** duy nhất, loại bỏ hoàn toàn lỗi Race Condition (TOCTOU).
 - **Xử lý đơn hàng bất đồng bộ (Event-Driven Ordering):** Làm phẳng đỉnh tải (Load Leveling) bằng **Apache Kafka** kèm cơ chế Retry có giới hạn, Dead-Letter Topic (`.dlt`) và tự động hoàn kho Redis (Compensation) nếu hàng đợi gặp sự cố.
@@ -54,7 +54,7 @@ sequenceDiagram
 
 ---
 
-## 🛠️ Công Nghệ Sử Dụng (Tech Stack)
+##  Công Nghệ Sử Dụng (Tech Stack)
 
 | Phân tầng | Công nghệ & Phiên bản |
 | :--- | :--- |
@@ -67,7 +67,7 @@ sequenceDiagram
 
 ---
 
-## 📂 Cấu Trúc Thư Mục (Project Structure)
+##  Cấu Trúc Thư Mục (Project Structure)
 
 ```text
 FlashMart-API/
@@ -96,7 +96,7 @@ FlashMart-API/
 
 ---
 
-## 🚀 Cài Đặt (Installation)
+##  Cài Đặt (Installation)
 
 ### 1. Yêu cầu môi trường (Prerequisites)
 - **Docker** & **Docker Compose** (Khuyên dùng để chạy nhanh toàn bộ hạ tầng).
@@ -127,7 +127,7 @@ Sau khi chạy xong:
 
 ---
 
-## ⚙️ Cấu Hình (Configuration)
+##  Cấu Hình (Configuration)
 
 Backend sử dụng biến môi trường thông qua file [`backend-source/.env.example`](file:///Users/macos/Desktop/REPO/FlashMart-API/backend-source/.env.example) và [`application.yml`](file:///Users/macos/Desktop/REPO/FlashMart-API/backend-source/src/main/resources/application.yml):
 
@@ -148,7 +148,7 @@ Backend sử dụng biến môi trường thông qua file [`backend-source/.env.
 
 ---
 
-## 💻 Cách Sử Dụng (Usage)
+##  Cách Sử Dụng (Usage)
 
 ### 1. Nạp dữ liệu mẫu tự động (12 sản phẩm + 1 Chiến dịch Flash Sale đang mở)
 Khi Backend đang chạy, mở Terminal tại thư mục `frontend-source` và chạy:
@@ -188,7 +188,7 @@ curl -X POST http://localhost:8080/api/v1/orders \
 
 ---
 
-## 📡 Tài Liệu API / Endpoints
+##  Tài Liệu API / Endpoints
 
 | Method | Endpoint | Quyền | Mô tả & Mã phản hồi chính |
 | :--- | :--- | :--- | :--- |
@@ -209,7 +209,7 @@ curl -X POST http://localhost:8080/api/v1/orders \
 
 ---
 
-## 🧪 Hướng Dẫn Chạy Test (Testing & Benchmarks)
+##  Hướng Dẫn Chạy Test (Testing & Benchmarks)
 
 ### 1. Chạy Unit Tests (Không cần bật Docker)
 Kiểm thử toàn bộ logic Domain Entities (`User`, `Product`, `Campaign`, `Order`), Use Cases và Web Controllers:
