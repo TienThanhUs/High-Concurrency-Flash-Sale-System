@@ -10,7 +10,7 @@
 
 ---
 
-## 🌐 Bản Demo Trực Tuyến (Live Demo)
+##  Bản Demo Trực Tuyến (Live Demo)
 
 - **Giao diện Web (Frontend - Pixel 8-Bit UI):** [https://flashmart-web.onrender.com](https://flashmart-web.onrender.com)
 - **Máy chủ REST API (Backend):** [https://flashmart-api.onrender.com/api/v1/products](https://flashmart-api.onrender.com/api/v1/products)
@@ -245,6 +245,6 @@ k6 run flash-sale-oversell-test.js
 
 ---
 
-## 📄 License
+##  License
 
 Dự án được phân phối dưới giấy phép **MIT License**. Bạn được tự do sử dụng, chỉnh sửa và phân phối lại mã nguồn cho mục đích học tập hoặc thương mại.
